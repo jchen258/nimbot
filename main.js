@@ -8,7 +8,7 @@ client.on('ready', () => {
 
 client.on('message', (msg) => {
   if (msg.content.includes('rach')) {
-    msg.channel.send("Fine, Rachel doesn't Sux");
+    msg.channel.send('Rachel sux');
   }
   if (msg.content.includes('jas')) {
     msg.channel.send('Jason is da bes');
