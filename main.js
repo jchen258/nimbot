@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+require('dotenv').config();
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -6,8 +7,11 @@ client.on('ready', () => {
 });
 
 client.on('message', (msg) => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
+  if (msg.content.includes('rach')) {
+    msg.channel.send('Rachel Sux');
+  }
+  if (msg.content.includes('jas')) {
+    msg.channel.send('Jason is da bes');
   }
 });
 
