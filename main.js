@@ -8,6 +8,7 @@ client.on('ready', () => {
 
 let sujungSuxCount = 0;
 let sujungDeathCount = 0;
+let izzyCount = 0;
 
 client.on('message', (msg) => {
   // if (msg.content.includes('addsujungdeath')) {
@@ -19,6 +20,10 @@ client.on('message', (msg) => {
   //   msg.channel.send(`<@497640446328307713> died ${sujungDeathCount} time(s)`);
   // }
 
+  if (msg.content.includes('izzy')) {
+    izzyCount++;
+    msg.channel.send(`i love <@399654371450683402> ${izzyCount} time(s)!!!`);
+  }
   if (msg.content.includes('rach')) {
     // rachel's user id
     msg.channel.send('<@330549774434566156> sux');
@@ -37,9 +42,22 @@ client.on('message', (msg) => {
       `<@497640446328307713> is sus, she sucks ${sujungSuxCount} time(s)`
     );
   }
+  if (msg.content.includes('lemow')) {
+    sujungSuxCount++;
+    // sujung's user id
+    msg.channel.send(`<@497640446328307713> is it LEMOW or LEMAYO`);
+  }
+  if (msg.content.includes('lemayo')) {
+    sujungSuxCount++;
+    // sujung's user id
+    msg.channel.send(`<@497640446328307713> it\'s LEMOW`);
+  }
   if (msg.content.includes('scam')) {
     // semi's user id
     msg.channel.send('<@113515798785507328> semi is skemi');
+  }
+  if (msg.content.includes('cheers')) {
+    msg.channel.send('<@&782473519690022963>');
   }
 });
 
