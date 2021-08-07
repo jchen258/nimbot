@@ -59,6 +59,9 @@ client.on('message', (msg) => {
   if (msg.content.includes('cheers')) {
     msg.channel.send('<@&782473519690022963>');
   }
+  if (msg.content.includes('kat')) {
+    msg.channel.send("It's KatrinAA not KatrIIna");
+  }
 });
 
 client.on('interactionCreate', (interaction) => {
