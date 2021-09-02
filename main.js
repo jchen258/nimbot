@@ -22,7 +22,7 @@ client.on('message', (msg) => {
 
   if (msg.content.includes('izzy')) {
     izzyCount++;
-    msg.channel.send(`i love <@399654371450683402> ${izzyCount} time(s)!!!`);
+    msg.channel.send(`i love Izzy ${izzyCount} time(s)!!!`);
   }
   if (msg.content.includes('rach')) {
     // rachel's user id
@@ -33,7 +33,7 @@ client.on('message', (msg) => {
   }
   if (msg.content.includes('dav')) {
     // david's user id
-    msg.channel.send('<@691723931736080385> is a wimpy wimp');
+    msg.channel.send('David is a wimpy wimp');
   }
   if (msg.content.includes('suj')) {
     sujungSuxCount++;
@@ -61,6 +61,12 @@ client.on('message', (msg) => {
   }
   if (msg.content.includes('kat')) {
     msg.channel.send("It's KatrinAA not KatrIIna");
+  }
+  if (msg.content.includes('korn')) {
+    msg.channel.send('catch me licking my Korncob on Kornhub ;)');
+  }
+  if (msg.content.includes('goodbye nimbot')) {
+    msg.reply('goodbye ily');
   }
 });
 
