@@ -1,20 +1,6 @@
 const fetch = require('node-fetch');
 const apiEndpoint = 'https://maplelegends.com/api/character';
 
-// let url = 'https://maplelegends.com/api/character?name=stratus';
-
-// let options = {
-//   method: 'GET',
-//   headers: {
-//     cookie: 'webpy_session_id=f408ce073e2bd0b0fe8925b959dd93abbded75f0; mlTheme=light; '
-//   }
-// };
-
-// fetch(url, options)
-//   .then(res => res.json())
-//   .then(json => console.log(json))
-//   .catch(err => console.error('error:' + err));
-
 const getCharInfo = async function (ign) {
   try {
     let url = `${apiEndpoint}?name=${ign}`;
@@ -32,15 +18,27 @@ const getCharInfo = async function (ign) {
     let { guild, name, level, gender, job, exp, quests, cards, donor, fame } = jsonResponse;
 
     let pronoun = gender === 'male' ? 'he' : 'she';
+    console.log(Object.keys(jsonResponse).length);
+    if (Object.keys(jsonResponse).length <= 0) {
+      return 'Character not found.';
+    } else {
+      let returnString = `${name} is a level ${level} ${job}.`;
 
-    let returnString = `${name} is a level ${level} ${job} in the guild ${guild}.`;
-    // ${pronoun[0].toUpperCase()}${pronoun.slice(
-    //   1
-    // )} has about ${100 - parseFloat(exp)}% until ${pronoun} levels. Let's wish them luck!`;
+      if (guild) {
+        returnString += ` They are in the guild ${guild}.`;
+      } else {
+        returnString += ' They are currently not in a guild.';
+      }
+      // ${pronoun[0].toUpperCase()}${pronoun.slice(
+      //   1
+      // )} has about ${100 - parseFloat(exp)}% until ${pronoun} levels. Let's wish them luck!`;
 
-    return returnString;
+      return returnString;
+    }
   } catch (e) {}
 };
+
+getCharInfo('baka');
 
 module.exports = {
   getCharInfo,
