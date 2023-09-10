@@ -29,9 +29,6 @@ const getCharInfo = async function (ign) {
       } else {
         returnString += ' They are currently not in a guild.';
       }
-      // ${pronoun[0].toUpperCase()}${pronoun.slice(
-      //   1
-      // )} has about ${100 - parseFloat(exp)}% until ${pronoun} levels. Let's wish them luck!`;
 
       return returnString;
     }
