@@ -35,8 +35,6 @@ const getCharInfo = async function (ign) {
   } catch (e) {}
 };
 
-getCharInfo('baka');
-
 module.exports = {
   getCharInfo,
 };
