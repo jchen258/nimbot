@@ -36,13 +36,13 @@ client.on('message', (msg) => {
       };
       getDeaths(searchTerms);
       break;
-    case 'help':
-      let helpMessage =
-        'Thank you for using Nimbot! Here are some commands that may help!\n- &stalk <ign>: grabs basic information of a specific IGN\n- &deaths <ign>: Searches MapleLegends website for the death count of the ign. Please note, if the ign is not specific enough, it will only return the top 5 characters with the most deaths relating to that IGN. \nP.S. There are some easter eggs :eyes: :egg:';
-      msg.channel.send(helpMessage);
-      break;
-    default:
-      console.log('nothing here');
+    // case 'help':
+    //   let helpMessage =
+    //     'Thank you for using Nimbot! Here are some commands that may help!\n- &stalk <ign>: grabs basic information of a specific IGN\n- &deaths <ign>: Searches MapleLegends website for the death count of the ign. Please note, if the ign is not specific enough, it will only return the top 5 characters with the most deaths relating to that IGN. \nP.S. There are some easter eggs :eyes: :egg:';
+    //   msg.channel.send(helpMessage);
+    //   break;
+    // default:
+    //   console.log('nothing here');
   }
   // }
 
