@@ -15,33 +15,36 @@ let deathTracker = {};
 
 client.on('message', (msg) => {
   let splitMessage = msg.content.split(' ');
+  console.log(funcs[splitMessage[0]]);
+  switch (funcs[splitMessage[0]]) {
+    case 'getCharInfo':
+      const ign = splitMessage[1].toLowerCase();
 
-  if (splitMessage[0][0] === '&') {
-    let commandCalled = funcs[splitMessage[0]];
-    switch (true) {
-      case commandCalled === 'getCharInfo':
-        const ign = splitMessage[1].toLowerCase();
+      let getInfo = async function (ign) {
+        let response = await getCharInfo(ign);
+        msg.channel.send(response);
+      };
 
-        let getInfo = async function (ign) {
-          let response = await getCharInfo(ign);
-          msg.channel.send(response);
-        };
+      getInfo(ign);
+      break;
+    case 'getDeaths':
+      let searchTerms = splitMessage[1];
 
-        getInfo(ign);
-      case commandCalled === 'getDeaths':
-        let searchTerms = splitMessage[1];
-
-        let getDeaths = async function (searchTerms) {
-          let response = await getDeathCount(searchTerms);
-          msg.channel.send(response);
-        };
-        getDeaths(searchTerms);
-      // case commandCalled === 'help':
-      //   let message =
-      //     'Thank you for using Nimbot! Here are some commands that may help!\n- &stalk <ign>: grabs basic information of a specific IGN\n- &deaths <ign>: Searches MapleLegends website for the death count of the ign. Please note, if the ign is not specific enough, it will only return the top 5 characters with the most deaths relating to that IGN. \nP.S. There are some easter eggs :eyes: :egg:';
-      //   msg.channel.send(message);
-    }
+      let getDeaths = async function (searchTerms) {
+        let response = await getDeathCount(searchTerms);
+        msg.channel.send(response);
+      };
+      getDeaths(searchTerms);
+      break;
+    case 'help':
+      let helpMessage =
+        'Thank you for using Nimbot! Here are some commands that may help!\n- &stalk <ign>: grabs basic information of a specific IGN\n- &deaths <ign>: Searches MapleLegends website for the death count of the ign. Please note, if the ign is not specific enough, it will only return the top 5 characters with the most deaths relating to that IGN. \nP.S. There are some easter eggs :eyes: :egg:';
+      msg.channel.send(helpMessage);
+      break;
+    default:
+      console.log('nothing here');
   }
+  // }
 
   // console.log('first hit', msg.channel.guild.name);
   // if (msg.channel.guild.name) {
@@ -68,43 +71,43 @@ client.on('message', (msg) => {
     );
   }
 
-  if (splitMessage[0] === '&died') {
-    let person = splitMessage[1];
-    console.log(person);
-    if (person.includes('@')) {
-      if (deathTracker[person]) {
-        deathTracker[person] += 1;
-      } else {
-        deathTracker[person] = 1;
-      }
-      msg.channel.send('death recorded');
-    } else {
-      msg.channel.send('please @ a user');
-    }
-  }
+  // if (splitMessage[0] === '&died') {
+  //   let person = splitMessage[1];
+  //   console.log(person);
+  //   if (person.includes('@')) {
+  //     if (deathTracker[person]) {
+  //       deathTracker[person] += 1;
+  //     } else {
+  //       deathTracker[person] = 1;
+  //     }
+  //     msg.channel.send('death recorded');
+  //   } else {
+  //     msg.channel.send('please @ a user');
+  //   }
+  // }
 
-  if (splitMessage[0] === '&showdeaths') {
-    let person = splitMessage[1];
+  // if (splitMessage[0] === '&showdeaths') {
+  //   let person = splitMessage[1];
 
-    if (person) {
-      if (deathTracker[person]) {
-        deathTracker[person] > 1
-          ? msg.channel.send(
-              `bimbo died ${deathTracker[person]} times! What a DUMMY! https://tenor.com/view/patrick-star-dumb-gif-20952040`
-            )
-          : msg.channel.send(`bimbo died ${deathTracker[person]} time!`);
-      } else {
-        msg.channel.send('Person has not died');
-      }
-    } else {
-      msg.channel.send('please specify a person');
-    }
-  }
+  //   if (person) {
+  //     if (deathTracker[person]) {
+  //       deathTracker[person] > 1
+  //         ? msg.channel.send(
+  //             `bimbo died ${deathTracker[person]} times! What a DUMMY! https://tenor.com/view/patrick-star-dumb-gif-20952040`
+  //           )
+  //         : msg.channel.send(`bimbo died ${deathTracker[person]} time!`);
+  //     } else {
+  //       msg.channel.send('Person has not died');
+  //     }
+  //   } else {
+  //     msg.channel.send('please specify a person');
+  //   }
+  // }
 
   // tests code
-  if (Date().includes('00:16:57 GMT-0400')) {
-    msg.channel.send('it is time to vote');
-  }
+  // if (Date().includes('00:16:57 GMT-0400')) {
+  //   msg.channel.send('it is time to vote');
+  // }
 
   // if (msg.content.includes('test')) {
   //   msg.channel.send(Date('THH:mm:ssZ'));
