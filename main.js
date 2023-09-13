@@ -13,6 +13,7 @@ let sujungSuxCount = 0;
 let izzyCount = 0;
 let deathTracker = {};
 
+console.log('hello world');
 client.on('message', (msg) => {
   let splitMessage = msg.content.split(' ');
   console.log(funcs[splitMessage[0]]);
