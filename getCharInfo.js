@@ -18,7 +18,7 @@ const getCharInfo = async function (ign) {
     let { guild, name, level, gender, job, exp, quests, cards, donor, fame } = jsonResponse;
 
     let pronoun = gender === 'male' ? 'he' : 'she';
-    console.log(Object.keys(jsonResponse).length);
+
     if (Object.keys(jsonResponse).length <= 0) {
       return 'Character not found.';
     } else {

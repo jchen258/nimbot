@@ -6,44 +6,47 @@ const { getDeathCount } = require('./getDeaths');
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-
+let userMap = {
+  sujung: '<@497640446328307713>',
+  semi: '<@113515798785507328>',
+};
 let funcs = { '&deaths': 'getDeaths', '&stalk': 'getCharInfo', '&help': 'help' };
 
 let sujungSuxCount = 0;
 let izzyCount = 0;
 let deathTracker = {};
 
-console.log('hello world');
 client.on('message', (msg) => {
   let splitMessage = msg.content.split(' ');
-  console.log(funcs[splitMessage[0]]);
-  switch (funcs[splitMessage[0]]) {
-    case 'getCharInfo':
-      const ign = splitMessage[1].toLowerCase();
+  let nimbotCalled = splitMessage[0][0] === '&';
+  if (nimbotCalled) {
+    switch (funcs[splitMessage[0]]) {
+      case 'getCharInfo':
+        const ign = splitMessage[1].toLowerCase();
 
-      let getInfo = async function (ign) {
-        let response = await getCharInfo(ign);
-        msg.channel.send(response);
-      };
+        let getInfo = async function (ign) {
+          let response = await getCharInfo(ign);
+          msg.channel.send(response);
+        };
 
-      getInfo(ign);
-      break;
-    case 'getDeaths':
-      let searchTerms = splitMessage[1];
+        getInfo(ign);
+        break;
+      case 'getDeaths':
+        let searchTerms = splitMessage[1];
 
-      let getDeaths = async function (searchTerms) {
-        let response = await getDeathCount(searchTerms);
-        msg.channel.send(response);
-      };
-      getDeaths(searchTerms);
-      break;
-    // case 'help':
-    //   let helpMessage =
-    //     'Thank you for using Nimbot! Here are some commands that may help!\n- &stalk <ign>: grabs basic information of a specific IGN\n- &deaths <ign>: Searches MapleLegends website for the death count of the ign. Please note, if the ign is not specific enough, it will only return the top 5 characters with the most deaths relating to that IGN. \nP.S. There are some easter eggs :eyes: :egg:';
-    //   msg.channel.send(helpMessage);
-    //   break;
-    // default:
-    //   console.log('nothing here');
+        let getDeaths = async function (searchTerms) {
+          let response = await getDeathCount(searchTerms);
+          msg.channel.send(response);
+        };
+        getDeaths(searchTerms);
+        break;
+      case 'help':
+        let helpMessage =
+          'Thank you for using Nimbot! Here are some commands that may help!\n- &stalk <ign>: grabs basic information of a specific IGN\n- &deaths <ign>: Searches MapleLegends website for the death count of the ign. Please note, if the ign is not specific enough, it will only return the top 5 characters with the most deaths relating to that IGN. \nP.S. There are some easter eggs :eyes: :egg:';
+        msg.channel.send(helpMessage);
+        break;
+      default:
+    }
   }
   // }
 
@@ -61,16 +64,11 @@ client.on('message', (msg) => {
   // }
 
   // April fools Santi
-  if (msg.content.includes('santi') || msg.content.includes('sanji')) {
-    msg.channel.send(
-      "Hey Sanji, our superstar guild leader! I gotta say, your fame is spreading faster than a wildfire in a dry forest. you're like the Kim Kardashian of the gaming world! But instead of selfies, you're slaying dragons and leading our guild to greatness. can't believe we have such a famous guildleader"
-    );
-  }
-  if (splitMessage[0] === '&invader') {
-    msg.channel.send(
-      'INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT! INVADER ALERT!'
-    );
-  }
+  // if (msg.content.includes('santi') || msg.content.includes('sanji')) {
+  //   msg.channel.send(
+  //     "Hey Sanji, our superstar guild leader! I gotta say, your fame is spreading faster than a wildfire in a dry forest. you're like the Kim Kardashian of the gaming world! But instead of selfies, you're slaying dragons and leading our guild to greatness. can't believe we have such a famous guildleader"
+  //   );
+  // }
 
   // if (splitMessage[0] === '&died') {
   //   let person = splitMessage[1];
@@ -137,25 +135,15 @@ client.on('message', (msg) => {
     izzyCount++;
     msg.channel.send(`NO CYAP`);
   }
-  if (msg.content.includes('bonk')) {
-    izzyCount++;
-    msg.channel.send(`i love baengel`);
-  }
-  if (msg.content.includes('rach')) {
-    // rachel's user id
-    msg.channel.send('<@330549774434566156> sux');
-  }
+
   if (msg.content.includes('jason')) {
     msg.channel.send('Jason is da bes');
   }
-  if (msg.content.includes('david')) {
-    // david's user id
-    msg.channel.send('David is a wimpy wimp');
-  }
+
   if (msg.content.toLowerCase().includes('suj')) {
     sujungSuxCount++;
     // sujung's user id
-    msg.channel.send(`<@497640446328307713> is sus, she sucks ${sujungSuxCount} time(s)`);
+    msg.channel.send(`${userMap['sujung']} is sus, she sucks ${sujungSuxCount} time(s)`);
   }
   if (msg.content.includes('semi')) {
     msg.channel.send('SKEMI!!!!!');
@@ -163,17 +151,14 @@ client.on('message', (msg) => {
   if (msg.content.includes('lemow')) {
     sujungSuxCount++;
     // sujung's user id
-    msg.channel.send(`<@497640446328307713> is it LEMOW or LEMAYO`);
+    msg.channel.send(`is it LEMOW or LEMAYO`);
   }
   if (msg.content.includes('lemayo')) {
     sujungSuxCount++;
     // sujung's user id
-    msg.channel.send(`<@497640446328307713> it\'s LEMOW`);
+    msg.channel.send(`it\'s LEMOW`);
   }
-  if (msg.content.includes('scam')) {
-    // semi's user id
-    msg.channel.send('<@113515798785507328> semi is skemi');
-  }
+
   if (msg.content.includes('cheers')) {
     msg.channel.send('<@&782473519690022963>');
   }
@@ -184,7 +169,7 @@ client.on('message', (msg) => {
     msg.channel.send('catch me licking my Korncob on Kornhub ;)');
   }
   if (msg.content.includes('blen')) {
-    msg.channel.send('<@158270805334032384> rattato');
+    msg.channel.send('rattato');
   }
   if (msg.content.includes('goodbye nimbot')) {
     // dice should give values between 0 - 100

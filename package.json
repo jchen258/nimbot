@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon main.js"
+    "start_dev": "nodemon main.js",
+    "start_prod": "node main.js"
   },
   "author": "Jason Chen",
   "license": "ISC",
@@ -17,5 +18,9 @@
   },
   "engines": {
     "node": "20.6.0"
-  }
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ]
 }
