@@ -66,7 +66,6 @@ const getDeathCount = async function (searchedIgn) {
   for (const [ign, deaths] of Object.entries(results)) {
     finalResponse += `${ign} died ${deaths} time(s).\n`;
   }
-  console.log(Object.keys(results)[0] === 'undefined');
 
   if (Object.keys(results).length === 1 && Object.keys(results)[0] === 'undefined') {
     finalResponse = 'Character not found';
