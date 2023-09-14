@@ -18,7 +18,7 @@ let deathTracker = {};
 
 client.on('message', (msg) => {
   let splitMessage = msg.content.split(' ');
-  let nimbotCalled = splitMessage[0][0] === '&';
+  let nimbotCalled = splitMessage[0][0] === '&' && funcs[splitMessage[0]];
   if (nimbotCalled) {
     switch (funcs[splitMessage[0]]) {
       case 'getCharInfo':
