@@ -66,14 +66,19 @@ const getDeathCount = async function (searchedIgn) {
   for (const [ign, deaths] of Object.entries(results)) {
     finalResponse += `${ign} died ${deaths} time(s).\n`;
   }
+  console.log(Object.keys(results)[0] === 'undefined');
 
-  if (Object.keys(results).length === 5) {
+  if (Object.keys(results).length === 1 && Object.keys(results)[0] === 'undefined') {
+    finalResponse = 'Character not found';
+  } else if (Object.keys(results).length === 5) {
     finalResponse +=
       "If you don't see your IGN here...adjust the IGN you're looking for.\nOr die more so you hit top 5...\nOr get a namechange to a more unique IGN.";
   }
+
   return finalResponse;
 };
 
+getDeathCount('kumquats');
 module.exports = {
   getDeathCount,
 };
