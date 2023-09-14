@@ -32,7 +32,9 @@ const getCharInfo = async function (ign) {
 
       return returnString;
     }
-  } catch (e) {}
+  } catch (e) {
+    console.log('error in getCharInfo.js', e);
+  }
 };
 
 module.exports = {
