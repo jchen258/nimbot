@@ -172,9 +172,9 @@ client.on('message', (msg) => {
     if (msg.content.includes('blen')) {
       msg.channel.send('rattato');
     }
-    if (msg.content.includes('goodbye nimbot')) {
+    if (msg.content.includes('bye nimbot')) {
       // dice should give values between 0 - 100
-      var dice = Math.floor(Math.random() * 100);
+      let dice = Math.floor(Math.random() * 100);
 
       switch (true) {
         case dice < 50:
@@ -186,8 +186,33 @@ client.on('message', (msg) => {
           msg.reply('https://tenor.com/view/bye-friend-farewell-so-long-gif-25205750');
           break;
         default:
-          msg.reply('https://tenor.com/view/bye-friend-farewell-so-long-gif-25205750');
+          msg.channel.send('https://tenor.com/view/bye-friend-farewell-so-long-gif-25205750');
           break;
+      }
+    }
+
+    if (msg.content === 'i love nimbot') {
+      let probability = Math.floor(Math.random() * 100);
+      let userTag = `<@${msg.author.id}>`;
+
+      switch (true) {
+        case probability > 80:
+          msg.channel.send(
+            'https://tenor.com/view/2skoo-2skoo-run-bts-jimin-heart-jimin-love-jimin-saranghae-gif-21062629'
+          );
+          break;
+        case probability > 60:
+          msg.channel.send(`and i love ${userTag}!! <3i love nimbot`);
+          break;
+        case probability > 40:
+          msg.channel.send(
+            'https://tenor.com/view/the-simpsons-homer-exiting-uncomfortable-leaving-now-gif-14492345'
+          );
+        case probability <= 20:
+          msg.channel.send('https://tenor.com/view/puppy-sending-love-gif-19432350');
+          break;
+        default:
+          msg.channel.send('i love me too! <3');
       }
     }
   }
