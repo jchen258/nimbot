@@ -69,7 +69,7 @@ const getDeathCount = async function (searchedIgn) {
     }
 
     if (Object.keys(results).length === 1 && Object.keys(results)[0] === 'undefined') {
-      finalResponse = 'Character not found';
+      finalResponse = "Character not found. The character has either never died, or doesn't exist.";
     } else if (Object.keys(results).length === 5) {
       finalResponse +=
         "If you don't see your IGN here...adjust the IGN you're looking for.\nOr die more so you hit top 5...\nOr get a namechange to a more unique IGN.";
