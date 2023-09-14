@@ -81,7 +81,6 @@ const getDeathCount = async function (searchedIgn) {
   }
 };
 
-getDeathCount('kumquats');
 module.exports = {
   getDeathCount,
 };
